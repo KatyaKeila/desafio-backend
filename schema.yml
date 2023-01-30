@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Project API CNAB
+  version: 1.0.0
+  description: kenzie sprint activity 2
+paths:
+  /api/accounts/:
+    get:
+      operationId: api_accounts_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Account'
+          description: ''
+    post:
+      operationId: api_accounts_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Account'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Account'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Account'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+          description: ''
+components:
+  schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        email:
+          type: string
+          format: email
+        is_superuser:
+          type: boolean
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly
+            assigning them.
+      required:
+      - email
+      - id
+      - password
+      - username
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

@@ -35,21 +35,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 DJANGO_APPS = [
-	"django.contrib.admin",
-	"django.contrib.auth",
-	"django.contrib.contenttypes",
-	"django.contrib.sessions",
-	"django.contrib.messages",
-	"django.contrib.staticfiles",
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
 THIRD_PARTY_APPS = [
-	"rest_framework",
-	#"drf_spectacular",
+    "rest_framework",
+    "drf_spectacular",
 ]
 
 MY_APPS = [
-	"accounts",
+    "accounts",
+    "form",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
@@ -90,18 +91,18 @@ WSGI_APPLICATION = "_cnab.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-	"default": {
-	"ENGINE": "django.db.backends.postgresql",
-	"NAME": os.getenv("POSTGRES_DB_NAME"),
-	"USER": os.getenv("POSTGRES_USERNAME"),
-	"PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-	"HOST": "127.0.0.1",
-	"PORT": "5432",
-},
-"outro_nome": {
-	"ENGINE": "django.db.backends.sqlite3",
-	"NAME": BASE_DIR / "db.sqlite3",
-	},
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB_NAME"),
+        "USER": os.getenv("POSTGRES_USERNAME"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
+    },
+    "outro_nome": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    },
 }
 
 
@@ -124,6 +125,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Project API CNAB",
+    "DESCRIPTION": "kenzie sprint activity 2",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -140,6 +152,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
