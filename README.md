@@ -7,7 +7,7 @@ Ao receber um arquivo CNAB com os dados das movimentações financeiras de vári
 
 Tem-se a tarefa de criar uma interface web que aceite upload do arquivo CNAB, normalize os dados e armazene-os em um banco de dados relacional e exiba essas informações em tela.
 
-    Techs
+ 2 .Techs
 
 Visão Geral das tecnologias usadas no projeto.
 
@@ -17,17 +17,20 @@ django rest_framework
 djangorestframework-simplejwt
 python-dotenv
 
-    Instalação e uso 3.1 Requisitos
+3. Instalação e uso 
+3.1 Requisitos
 
-    Python a partir da versão 3.11.1 Gerenciador de pacotes pip Banco de dados PostgreSQL
+    Python a partir da versão 3.11.1 
+    Gerenciador de pacotes pip 
+    Banco de dados PostgreSQL
 
 3.2 Instalação
 
-3.2.1 - Crie um banco de dados chamado Django_animes_database no PostgreSQL 4.2.2 - Após o clone no repositório crie um ambiente de desenvolvimento:
+3.2.1 - Crie um banco de dados no PostgreSQL 4.2.2 - Após o clone no repositório crie um ambiente de desenvolvimento:
 
 python -m venv venv
 
-3.2.3 - Após a criação do ambiente virtual voce terá que ativa-lo com o seguinte comando
+3.2.3 - Após a criação do ambiente virtual voce terá que ativ-lo com o seguinte comando
 
 para linux:
 
